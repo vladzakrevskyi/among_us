@@ -9,7 +9,4 @@ In order to build local development environment run following commands:
 # yarn run build
 # yarn run start
 ```
-
-Then you can browse the homepage:
-* http://localhost:8081/
-
+Follow Loopback link in the console.
