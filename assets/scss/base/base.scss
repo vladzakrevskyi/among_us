@@ -1,5 +1,30 @@
 body {
   font-family: 'Source Sans Pro', sans-serif;
 
-  background-color: $color-background;
+  background-image: url('/assets/img/body-background.jpeg');
+
+  .container-panel {
+    z-index: 5;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 10px;
+    height: fit-content;
+    width: 86%;
+    gap: 20px;
+
+    @media screen and (min-width: 776px) {
+      flex-direction: row;
+    }
+
+    @media screen and (max-width: 936px) {
+      flex-direction: column;
+    }
+  }
+
+  .button-start {
+    margin: 20px;
+    width: 200px;
+    height: 40px;
+  }
 }
