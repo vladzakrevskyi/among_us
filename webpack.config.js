@@ -1,14 +1,25 @@
-const MiniCSSExtractPlugin = require('mini-css-extract-plugin')
-const path = require('path')
-const HtmlWebpackPlugin = require('html-webpack-plugin')
+const MiniCSSExtractPlugin = require('mini-css-extract-plugin');
+const path = require('path');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const CopyPlugin = require('copy-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
+
 
 module.exports = {
-    entry: './assets/js/app.js',
+    entry: [
+        './assets/js/app.js',
+        './assets/scss/app.scss'
+    ],
     module: {
         rules: [
-            {test: /\.svg$/, use: 'svg-inline-loader'},
-            {test: /\.scss$/, use: ['style-loader', 'css-loader', 'sass-loader']},
-            {test: /\.(js)$/, use: 'babel-loader'}
+            {
+                test: /\.s?css$/,
+                use: [
+                    MiniCSSExtractPlugin.loader,
+                    "css-loader",
+                    "sass-loader"
+                ]
+            }
         ]
     },
     output: {
@@ -16,6 +27,7 @@ module.exports = {
         filename: 'app.[hash].js'
     },
     plugins: [
+        new CleanWebpackPlugin(),
         new HtmlWebpackPlugin(
             {template: './index.html', inject: 'body'}
         ),
